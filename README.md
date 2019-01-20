@@ -57,6 +57,26 @@ path.animate(0.3, {
 }, function(){
   console.log('Animation has finished');
 });
+
+var bar = new ProgressBar.Line('#container', {
+  from: { color: '#000'},
+  to: { color: '#888'},
+  step: function(state, bar, attachment){
+    bar.path.setAttribute('stroke', state.color);
+  }
+});
+
+var bar = new ProgressBar.Line('#container', {
+  step: function(state, bar, attachment){
+    bar.path.setattribute('stroke', state.color);
+  }
+});
+
+function(state, shape, attachment){
+  shape.path.setAttribute('stroke-width', state.width);
+  shape.path.setAttribute('stroke', state.color);
+  attachment.textinnerHTML = shape.value() * 100;
+}
 ```
 
 ```css
@@ -112,5 +132,15 @@ path.animate(0.3, {
     circle.path.setAttribute('stroke', state.color);
   }
 }
+```
+
+
+```
+npm install
+npm install -g watchify
+npm install -g browserify
+
+npm install -g mocha
+npm install -g testem
 ```
 
